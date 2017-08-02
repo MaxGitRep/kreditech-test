@@ -1,0 +1,47 @@
+group 'com.kreditech'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'idea'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile (
+            "com.codeborne:selenide:4.5.1",
+            "io.github.bonigarcia:webdrivermanager:1.7.1",
+            "org.projectlombok:lombok:1.16.18",
+            "org.slf4j:slf4j-simple:1.7.25",
+            "org.testng:testng:6.11"
+    )
+}
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "io.qameta.allure:allure-gradle:2.3"
+    }
+}
+
+apply plugin: 'io.qameta.allure'
+
+allure {
+    version = '2.2.1'
+    autoconfigure = true
+    configuration = 'compile'
+    reportDir = file('build/allure-results')
+    useTestNG {
+        version = '2.0-BETA16'
+    }
+}
+
+
+test{
+    useTestNG(){
+        suites 'src/test/resources/testng.xml'
+    }
+}

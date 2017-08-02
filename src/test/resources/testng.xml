@@ -1,0 +1,24 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Kreditech smoke test" verbose="1">
+    <listeners>
+        <listener class-name="com.kreditech.uipack.listeners.AllureScreenshotListener"></listener>
+        <listener class-name="com.kreditech.uipack.listeners.LogListener"></listener>
+    </listeners>
+    <parameter name="browser" value="chrome"/>
+    <test name="Search Kreditech Test">
+        <classes>
+            <class name="com.kreditech.uitest.SearchInGoogle"/>
+        </classes>
+    </test>
+    <test name="Social Links Visit Test">
+        <classes>
+            <class name="com.kreditech.uitest.OpenSocialLinks"/>
+        </classes>
+    </test>
+    <test name="Open pages from Main Menu">
+        <classes>
+            <class name="com.kreditech.uitest.OpenMainMenuPages"/>
+        </classes>
+    </test>
+</suite>
